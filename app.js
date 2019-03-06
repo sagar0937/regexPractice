@@ -1,55 +1,49 @@
-// MAPS = key-value pairs - can use ANY type as a key or value
+// Form Blur Event Listeners
+document.getElementById('name').addEventListener('blur', validateName);
+document.getElementById('zip').addEventListener('blur', validateZip);
+document.getElementById('email').addEventListener('blur', validateEmail);
+document.getElementById('phone').addEventListener('blur', validatePhone);
 
-const map1 = new Map();
+function validateName() {
+  const name = document.getElementById('name');
+  const re = /^[a-zA-Z]{2,10}$/;
 
-// Set Keys
-const key1 = 'some string',
-      key2 = {},
-      key3 = function() {};
+  if(!re.test(name.value)){
+    name.classList.add('is-invalid');
+  } else {
+    name.classList.remove('is-invalid');
+  }
+}
 
-// Set map values by key
-map1.set(key1, 'Value of key1');
-map1.set(key2, 'Value of key2');
-map1.set(key3, 'Value of key3');
+function validateZip() {
+  const zip = document.getElementById('zip');
+  const re = /^[0-9]{5}(-[0-9]{4})?$/;
 
-// Get values by key
-// console.log(map1.get(key1), map1.get(key2), map1.get(key3));
+  if(!re.test(zip.value)){
+    zip.classList.add('is-invalid');
+  } else {
+    zip.classList.remove('is-invalid');
+  }
+}
 
-// Count values
-// console.log(map1.size);
+function validateEmail() {
+  const email = document.getElementById('email');
+  const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
-// ITERATING MAPS
+  if(!re.test(email.value)){
+    email.classList.add('is-invalid');
+  } else {
+    email.classList.remove('is-invalid');
+  }
+}
 
-// Loop using for...of to get keys and values
-// for(let [key, value] of map1) {
-//   console.log(`${key} = ${value}`);
-// }
+function validatePhone() {
+  const phone = document.getElementById('phone');
+  const re = /^\(?\d{3}\)?[-. ]?\d{3}[-. ]?\d{4}$/;
 
-// Iterate keys only
-// for(let key of map1.keys()) {
-//   console.log(key);
-// }
-
-// Iterate values only
-// for(let value of map1.values()) {
-//   console.log(value);
-// }
-
-// Loop with forEach
-// map1.forEach(function(value, key){
-//   console.log(`${key} = ${value}`);
-// });
-
-// CONVERT TO ARRAYS
-
-// Create an array of the key value pairs
-const keyValArr = Array.from(map1);
-console.log(keyValArr);
-
-// Create an array of the values
-const valArr = Array.from(map1.values());
-console.log(valArr);
-
-// Create an array of the keys
-const keyArr = Array.from(map1.keys());
-console.log(keyArr);
+  if(!re.test(phone.value)){
+    phone.classList.add('is-invalid');
+  } else {
+    phone.classList.remove('is-invalid');
+  }
+}
